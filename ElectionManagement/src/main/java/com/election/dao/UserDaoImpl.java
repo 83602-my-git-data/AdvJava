@@ -11,7 +11,7 @@ import java.sql.SQLException;
 import com.election.pojos.User;
 import com.election.utils.DbUtils;
 
-public class UserDaoImpl implements UserDao, Closeable {
+public class UserDaoImpl implements UserDao, AutoCloseable {
  private Connection connection = null;
  private String query = "";	
 
@@ -31,7 +31,7 @@ public class UserDaoImpl implements UserDao, Closeable {
 
 	@Override
 	public User findByEmail(String email) throws Exception {
-		query = "select * from user where email =?";
+		query = "select * from users where email =?";
 		 User user = null;
 		try (PreparedStatement stmt = connection.prepareStatement(query)) {
 			stmt.setString(1, email);
@@ -45,7 +45,7 @@ public class UserDaoImpl implements UserDao, Closeable {
 
 	@Override
 	public User findById(int id) throws Exception {
-		query = "select * from user where   id =?";
+		query = "select * from users where   id =?";
 		 User user = null;
 		try (PreparedStatement stmt = connection.prepareStatement(query)) {
 			stmt.setInt(1, id);
@@ -76,7 +76,7 @@ public class UserDaoImpl implements UserDao, Closeable {
 
 	@Override
 	public int updateStatus(int userId, boolean voted) throws Exception {
-		query = "UPDATE user SET status = ? WHERE id = ?";
+		query = "UPDATE users SET status = ? WHERE id = ?";
 		int result = 0;
 		try (PreparedStatement stmt = connection.prepareStatement(query)) {
 			stmt.setBoolean(1, voted);
@@ -88,7 +88,7 @@ public class UserDaoImpl implements UserDao, Closeable {
 
 	@Override
 	public int updatePassword(int userId, String newPassword) throws Exception {
-		query = "UPDATE user SET password = ? WHERE id = ?";
+		query = "UPDATE users SET password = ? WHERE id = ?";
 		int result = 0;
 		try (PreparedStatement stmt = connection.prepareStatement(query)) {
 			stmt.setString(1, newPassword);
@@ -100,7 +100,7 @@ public class UserDaoImpl implements UserDao, Closeable {
 
 	@Override
 	public int deleteById(int id) throws Exception {
-		query = "DELETE FROM user WHERE id = ?";
+		query = "DELETE FROM users WHERE id = ?";
 		int result = 0;
 		try (PreparedStatement stmt = connection.prepareStatement(query)) {
 			stmt.setInt(1, id);
