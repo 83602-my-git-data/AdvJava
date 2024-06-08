@@ -11,7 +11,7 @@ import java.sql.SQLException;
 import com.election.pojos.User;
 import com.election.utils.DbUtils;
 
-public class UserDaoImpl implements UserDao, AutoCloseable {
+public class UserDaoImpl implements UserDao {
  private Connection connection = null;
  private String query = "";	
 

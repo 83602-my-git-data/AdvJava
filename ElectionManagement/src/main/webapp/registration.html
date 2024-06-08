@@ -71,16 +71,40 @@
   <body>
     <div class="container">
       <h1>Registration Page</h1>
-      <form onsubmit="validateData(); return false;">
+      <form>
         <table>
           <tr>
-            <td><label for="uname">Username</label></td>
+            <td><label for="fname">First Name</label></td>
             <td>
               <input
                 type="text"
-                id="uname"
-                name="uname"
-                placeholder="Enter Username"
+                id="fname"
+                name="fname"
+                placeholder="Enter First Name"
+                required
+              />
+            </td>
+          </tr>
+          <tr>
+            <td><label for="lname">Last Name</label></td>
+            <td>
+              <input
+                type="text"
+                id="lname"
+                name="lname"
+                placeholder="Enter Last Name"
+                required
+              />
+            </td>
+          </tr>
+          <tr>
+            <td><label for="email">Email</label></td>
+            <td>
+              <input
+                type="text"
+                id="email"
+                name="email"
+                placeholder="Enter Email"
                 required
               />
             </td>
@@ -92,6 +116,18 @@
                 type="password"
                 id="psw"
                 placeholder="Enter Password"
+                required
+              />
+            </td>
+          </tr>
+           <tr>
+            <td><label for="dob">Date Of Birth</label></td>
+            <td>
+              <input
+                type="date"
+                id="dob"
+                name="dob"
+                placeholder="Enter Date Of Birth"
                 required
               />
             </td>
@@ -106,63 +142,3 @@
     </div>
   </body>
 </html>
-
-<!-- <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-  </head>
-  <body>
-    <script>
-      function validateData() {
-        var uname = document.getElementById("uname").value;
-        var psw = document.getElementById("psw").value;
-        if (uname != "" && psw != "") {
-          window.localStorage.setItem("email", uname);
-          window.localStorage.setItem("password", psw);
-          window.location.href = "admin.html";
-        } else {
-          alert("Please fill all the fields");
-        }
-      }
-    </script>
-    <center>
-      <h1>Registration Page</h1>
-      <form onsubmit="validateData(); return false;">
-        <table border="1">
-          <tr>
-            <td><label for="uname">UserName</label></td>
-            <td>
-              <input
-                type="text"
-                id="uname"
-                name="uname"
-                placeholder="Enter Username"
-                required
-              />
-            </td>
-          </tr>
-          <tr>
-            <td><label for="psw">Password</label></td>
-            <td>
-              <input
-                type="password"
-                id="psw"
-                name="psw"
-                placeholder="Enter Password"
-                required
-              />
-            </td>
-          </tr>
-          <tr>
-            <td colspan="2" align="center">
-              <input type="submit" value="Submit" />
-            </td>
-          </tr>
-        </table>
-      </form>
-    </center>
-  </body>
-</html> -->

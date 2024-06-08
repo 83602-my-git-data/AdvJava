@@ -2,7 +2,7 @@ package com.election.dao;
 
 import com.election.pojos.User;
 
-public interface UserDao { 
+public interface UserDao extends AutoCloseable { 
      User findByEmail(String email) throws Exception; 
     User findById(int id) throws Exception; 
      int save(User user) throws Exception; 
