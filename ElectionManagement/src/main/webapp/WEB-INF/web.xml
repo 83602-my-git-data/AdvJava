@@ -23,7 +23,7 @@
   </servlet>
   <servlet-mapping>
   	<servlet-name>Result</servlet-name>
-  	<url-pattern>/resultservlet</url-pattern>
+  	<url-pattern>/result</url-pattern>
   </servlet-mapping>
   <servlet>
   <servlet-name>SignUp</servlet-name>
@@ -33,4 +33,8 @@
    <servlet-name>SignUp</servlet-name>
    <url-pattern>/register</url-pattern>
    </servlet-mapping>
+   <context-param>
+  		<param-name>AppTitle</param-name>
+  		<param-value>Bharat - Online Voting</param-value>
+	</context-param>
 </web-app>

@@ -9,12 +9,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/delete/:id")
+import com.election.dao.CandidateDao;
+import com.election.dao.CandidateDaoImpl;
+
+@WebServlet("/delete")
 public class DeleteCandidate extends HttpServlet {
    
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		PrintWriter out = resp.getWriter();
-		out.write("<h1>Sham </h1><h1>"+req.getParameter("id")+"</h1>");
+		try(CandidateDao cd = new CandidateDaoImpl()) {
+			int result = cd.deleteById(Integer.parseInt(req.getParameter("id")));
+			 resp.sendRedirect("result");
+		} catch (Exception e) {
+			System.out.println("in Delete Candidate error");
+		}
 	}
 }

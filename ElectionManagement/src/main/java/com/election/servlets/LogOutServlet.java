@@ -3,6 +3,7 @@ package com.election.servlets;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -34,6 +35,9 @@ public class LogOutServlet extends HttpServlet {
 		out.println("</head>");
 		out.println("<body>");
 		out.println("<div class='container'>");
+		ServletContext app = this.getServletContext();
+		String appTitle = app.getInitParameter("AppTitle");
+		out.printf("<h3>%s</h3>", appTitle);
 		out.printf("<h1>Goodbye, %s</h1><hr/>\n", user.getFirst_name());
 		session.invalidate();
 		out.println("<p>Thank you.</p>");

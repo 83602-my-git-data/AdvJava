@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -28,7 +29,7 @@ public class ResultServlet extends HttpServlet {
 			out.println("<style>");
 			out.println("body {font-family: Arial, sans-serif; background-color: #f4f4f4; margin: 0; padding: 0;}");
 			out.println(".container {width: 80%; margin: 50px auto; background: #fff; padding: 20px; box-shadow: 0 0 10px rgba(0,0,0,0.1);}");
-			out.println("h1 {text-align: center; color: #333;}");
+			out.println("h1,h3 {text-align: center; color: #333;}");
 			out.println("table {width: 100%; border-collapse: collapse; margin: 20px 0;}");
 			out.println("table, th, td {border: 1px solid #ddd;}");
 			out.println("th, td {padding: 8px; text-align: center;}");
@@ -39,6 +40,9 @@ public class ResultServlet extends HttpServlet {
 			out.println("</head>");
 			out.println("<body>");
 			out.println("<div class='container'>");
+			ServletContext app = this.getServletContext();
+			String appTitle = app.getInitParameter("AppTitle");
+			out.printf("<h3>%s</h3>", appTitle);
 			out.println("<h1>Candidate Information</h1>");
 			out.println("<table>");
 			out.println("<tr>");
@@ -56,17 +60,18 @@ public class ResultServlet extends HttpServlet {
 				out.println("<td>" + candidate.getName() + "</td>");
 				out.println("<td>" + candidate.getParty() + "</td>");
 				out.println("<td>");
-				//out.printf("<a href='delete/%d'>Delete</a>",candidate.getId());
-				out.println("<a href=''>Delete</a>");
+				out.printf("<a href='delete?id=%d'>Delete</a>",candidate.getId());
+				//out.println("<a href=''>Delete</a>");
 				out.println(" | ");
-				out.println("<a href=''>Update</a>");
+				out.printf("<a href='edit?id=%d'>Edits</a>",candidate.getId());
 				out.println("</td>");
 				out.println("</tr>");
 			}
 
 			out.println("</table>");
 			out.println("<div style='text-align: center; margin-top: 20px;'>");
-			out.println("<a href='announce'>Announce</a> ");
+			out.println("<a href='announcement.html'>Announcement</a> &nbsp&nbsp");
+			out.println("<a href='list'>Sort List</a> &nbsp&nbsp");
 			out.println("<a href='logout'>SignOut</a>");
 			out.println("</div>");
 			out.println("</div>");

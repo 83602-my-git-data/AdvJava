@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -43,8 +44,14 @@ public class CandidateListServlet extends HttpServlet {
 			out.println("</head>");
 			out.println("<body>");
 			out.println("<div class='container'>");
-			out.println("<h3>Online Voting</h3>");
+			ServletContext app = this.getServletContext();
+			String appTitle = app.getInitParameter("AppTitle");
+			out.printf("<h3>%s</h3>", appTitle);
+			//out.println("<h3>Online Voting</h3>");
 			out.printf("<h3> Name Of Voter is %s </h3>", user.getFirst_name());
+			String message = (String) app.getAttribute("announcement");
+			if(message.length() !=0)
+				out.printf("Announcement: %s<br/><br/>\n", message);
 			out.println("<form method='post' action='vote'>");
 			for (Candidate c : list) {
 				out.printf("<div class='candidate'><input type='radio' name='candidate' value='%d'/> %s (%s)</div>\n", 

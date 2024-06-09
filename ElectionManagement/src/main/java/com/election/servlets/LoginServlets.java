@@ -24,7 +24,7 @@ public class LoginServlets extends HttpServlet {
 			if (user != null && user.getPassword().equals(password) && user.getRole().equals("admin")) {
 				HttpSession session = req.getSession();
 				session.setAttribute("user", user);
-				resp.sendRedirect("resultservlet");
+				resp.sendRedirect("result");
 			} else if (user != null && user.getPassword().equals(password) && user.getRole().equals("voter")) {
 				HttpSession session = req.getSession();
 				session.setAttribute("user", user);
