@@ -15,12 +15,12 @@ public class AppControllers extends HttpServlet {
     
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		System.out.println(req.getRequestURI());
+	//	System.out.println(req.getRequestURI());
 		processRequest(req, resp);
 	}
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		System.out.println(req.getRequestURI());
+		// System.out.println(req.getRequestURI());
 		processRequest(req, resp);
 	}
 	

@@ -2,6 +2,7 @@ package com.app.beans;
 
 import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import com.app.dao.BlogDao;
 import com.app.pojos.Blogs;
@@ -31,7 +32,7 @@ public class BlogListBeans {
 
 	public void myBlogList() {
 		try (BlogDao bd = new BlogDao();) {
-			blogList = bd.AllBlog(id);
+			blogList = bd.AllBlog().stream().filter(blog -> blog.getuserId()==id).collect(Collectors.toList());
 
 		} catch (Exception e) {
 			// TODO: handle exception
